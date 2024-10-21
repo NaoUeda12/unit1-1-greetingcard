@@ -1,0 +1,28 @@
+Index: app/src/main/java/com/example/greetingcard/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.greetingcard\n\nimport android.os.Bundle\nimport androidx.activity.ComponentActivity\nimport androidx.activity.compose.setContent\nimport androidx.compose.foundation.layout.padding\nimport androidx.compose.material3.MaterialTheme\nimport androidx.compose.material3.Surface\nimport androidx.compose.material3.Text\nimport androidx.compose.runtime.Composable\nimport androidx.compose.ui.Modifier\nimport androidx.compose.ui.graphics.Color\nimport androidx.compose.ui.tooling.preview.Preview\nimport androidx.compose.ui.unit.dp\nimport com.example.greetingcard.ui.theme.GreetingCardTheme\n\nclass MainActivity : ComponentActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContent {\n            GreetingCardTheme {\n                // カリキュラムのコードではMaterialTheme.colors.backgroundだったが、Unresolved reference: colorsというエラーのため変更 //\n                Surface(color = MaterialTheme.colorScheme.background) {\n                    Greeting(\"Android\")\n                }\n            }\n        }\n    }\n}\n\n@Composable\nfun Greeting(name: String) {\n    Surface(color = Color.Magenta) {\n        Text(\n            text = \"Hi, my name is $name!\", modifier = Modifier.padding(24.dp)\n        )\n\n    }\n\n}\n\n@Preview(showBackground = true)\n@Composable\nfun GreetingPreview() {\n    GreetingCardTheme {\n        Greeting(\"Android\")\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/greetingcard/MainActivity.kt b/app/src/main/java/com/example/greetingcard/MainActivity.kt
+--- a/app/src/main/java/com/example/greetingcard/MainActivity.kt	(revision 22e12e7402e4ca556b5be61ad5a8cbb30e1e81c1)
++++ b/app/src/main/java/com/example/greetingcard/MainActivity.kt	(date 1729487815889)
+@@ -3,6 +3,7 @@
+ import android.os.Bundle
+ import androidx.activity.ComponentActivity
+ import androidx.activity.compose.setContent
++import androidx.compose.foundation.layout.fillMaxSize
+ import androidx.compose.foundation.layout.padding
+ import androidx.compose.material3.MaterialTheme
+ import androidx.compose.material3.Surface
+@@ -20,7 +21,8 @@
+         setContent {
+             GreetingCardTheme {
+                 // カリキュラムのコードではMaterialTheme.colors.backgroundだったが、Unresolved reference: colorsというエラーのため変更 //
+-                Surface(color = MaterialTheme.colorScheme.background) {
++                Surface(modifier = Modifier.fillMaxSize(),
++                    color = MaterialTheme.colorScheme.background) {
+                     Greeting("Android")
+                 }
+             }
