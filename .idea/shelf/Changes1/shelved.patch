@@ -1,0 +1,342 @@
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\nplugins {\n    alias(libs.plugins.android.application) apply false\n    alias(libs.plugins.kotlin.android) apply false\n    alias(libs.plugins.kotlin.compose) apply false\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+--- a/build.gradle.kts	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/build.gradle.kts	(date 1729758824573)
+@@ -3,4 +3,5 @@
+     alias(libs.plugins.android.application) apply false
+     alias(libs.plugins.kotlin.android) apply false
+     alias(libs.plugins.kotlin.compose) apply false
++    alias(libs.plugins.gradle.ktlint) apply false
+ }
+\ No newline at end of file
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\nagp = \"8.7.1\"\nkotlin = \"2.0.0\"\ncoreKtx = \"1.10.1\"\njunit = \"4.13.2\"\njunitVersion = \"1.1.5\"\nespressoCore = \"3.5.1\"\nlifecycleRuntimeKtx = \"2.6.1\"\nactivityCompose = \"1.8.0\"\ncomposeBom = \"2024.04.01\"\n\n[libraries]\nandroidx-core-ktx = { group = \"androidx.core\", name = \"core-ktx\", version.ref = \"coreKtx\" }\njunit = { group = \"junit\", name = \"junit\", version.ref = \"junit\" }\nandroidx-junit = { group = \"androidx.test.ext\", name = \"junit\", version.ref = \"junitVersion\" }\nandroidx-espresso-core = { group = \"androidx.test.espresso\", name = \"espresso-core\", version.ref = \"espressoCore\" }\nandroidx-lifecycle-runtime-ktx = { group = \"androidx.lifecycle\", name = \"lifecycle-runtime-ktx\", version.ref = \"lifecycleRuntimeKtx\" }\nandroidx-activity-compose = { group = \"androidx.activity\", name = \"activity-compose\", version.ref = \"activityCompose\" }\nandroidx-compose-bom = { group = \"androidx.compose\", name = \"compose-bom\", version.ref = \"composeBom\" }\nandroidx-ui = { group = \"androidx.compose.ui\", name = \"ui\" }\nandroidx-ui-graphics = { group = \"androidx.compose.ui\", name = \"ui-graphics\" }\nandroidx-ui-tooling = { group = \"androidx.compose.ui\", name = \"ui-tooling\" }\nandroidx-ui-tooling-preview = { group = \"androidx.compose.ui\", name = \"ui-tooling-preview\" }\nandroidx-ui-test-manifest = { group = \"androidx.compose.ui\", name = \"ui-test-manifest\" }\nandroidx-ui-test-junit4 = { group = \"androidx.compose.ui\", name = \"ui-test-junit4\" }\nandroidx-material3 = { group = \"androidx.compose.material3\", name = \"material3\" }\n\n[plugins]\nandroid-application = { id = \"com.android.application\", version.ref = \"agp\" }\nkotlin-android = { id = \"org.jetbrains.kotlin.android\", version.ref = \"kotlin\" }\nkotlin-compose = { id = \"org.jetbrains.kotlin.plugin.compose\", version.ref = \"kotlin\" }\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+--- a/gradle/libs.versions.toml	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/gradle/libs.versions.toml	(date 1729758759577)
+@@ -10,6 +10,7 @@
+ composeBom = "2024.04.01"
+ 
+ [libraries]
++compose-lint-checks = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.4.2" }
+ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+ junit = { group = "junit", name = "junit", version.ref = "junit" }
+ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+@@ -26,6 +27,7 @@
+ androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+ 
+ [plugins]
++gradle-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "12.1.1" }
+ android-application = { id = "com.android.application", version.ref = "agp" }
+ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+Index: app/src/test/java/com/example/greetingcard/ExampleUnitTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.greetingcard\n\nimport org.junit.Test\n\nimport org.junit.Assert.*\n\n/**\n * Example local unit test, which will execute on the development machine (host).\n *\n * See [testing documentation](http://d.android.com/tools/testing).\n */\nclass ExampleUnitTest {\n    @Test\n    fun addition_isCorrect() {\n        assertEquals(4, 2 + 2)\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/test/java/com/example/greetingcard/ExampleUnitTest.kt b/app/src/test/java/com/example/greetingcard/ExampleUnitTest.kt
+--- a/app/src/test/java/com/example/greetingcard/ExampleUnitTest.kt	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/app/src/test/java/com/example/greetingcard/ExampleUnitTest.kt	(date 1729759917913)
+@@ -1,8 +1,7 @@
+ package com.example.greetingcard
+ 
+-import org.junit.Test
+-
+ import org.junit.Assert.*
++import org.junit.Test
+ 
+ /**
+  * Example local unit test, which will execute on the development machine (host).
+@@ -14,4 +13,4 @@
+     fun addition_isCorrect() {
+         assertEquals(4, 2 + 2)
+     }
+-}
+\ No newline at end of file
++}
+Index: app/src/main/java/com/example/greetingcard/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.greetingcard\n\nimport android.os.Bundle\nimport androidx.activity.ComponentActivity\nimport androidx.activity.compose.setContent\nimport androidx.compose.foundation.layout.fillMaxSize\nimport androidx.compose.foundation.layout.padding\nimport androidx.compose.material3.MaterialTheme\nimport androidx.compose.material3.Surface\nimport androidx.compose.material3.Text\nimport androidx.compose.runtime.Composable\nimport androidx.compose.ui.Modifier\nimport androidx.compose.ui.graphics.Color\nimport androidx.compose.ui.tooling.preview.Preview\nimport androidx.compose.ui.unit.dp\nimport com.example.greetingcard.ui.theme.GreetingCardTheme\n\nclass MainActivity : ComponentActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContent {\n            GreetingCardTheme {\n                // カリキュラムのコードではMaterialTheme.colors.backgroundだったが、Unresolved reference: colorsというエラーのため変更 //\n                Surface(modifier = Modifier.fillMaxSize(),\n                    color = MaterialTheme.colorScheme.background) {\n                    Greeting(\"Android\")\n                }\n            }\n        }\n    }\n}\n\n@Composable\nfun Greeting(name: String) {\n    Surface(color = Color.Magenta) {\n        Text(\n            text = \"Hi, my name is $name!\", modifier = Modifier.padding(24.dp)\n        )\n\n    }\n\n}\n\n@Preview(showBackground = true)\n@Composable\nfun GreetingPreview() {\n    GreetingCardTheme {\n        Greeting(\"Android\")\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/greetingcard/MainActivity.kt b/app/src/main/java/com/example/greetingcard/MainActivity.kt
+--- a/app/src/main/java/com/example/greetingcard/MainActivity.kt	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/app/src/main/java/com/example/greetingcard/MainActivity.kt	(date 1729759917973)
+@@ -21,8 +21,10 @@
+         setContent {
+             GreetingCardTheme {
+                 // カリキュラムのコードではMaterialTheme.colors.backgroundだったが、Unresolved reference: colorsというエラーのため変更 //
+-                Surface(modifier = Modifier.fillMaxSize(),
+-                    color = MaterialTheme.colorScheme.background) {
++                Surface(
++                    modifier = Modifier.fillMaxSize(),
++                    color = MaterialTheme.colorScheme.background,
++                ) {
+                     Greeting("Android")
+                 }
+             }
+@@ -34,11 +36,10 @@
+ fun Greeting(name: String) {
+     Surface(color = Color.Magenta) {
+         Text(
+-            text = "Hi, my name is $name!", modifier = Modifier.padding(24.dp)
++            text = "Hi, my name is $name!",
++            modifier = Modifier.padding(24.dp),
+         )
+-
+     }
+-
+ }
+ 
+ @Preview(showBackground = true)
+@@ -47,4 +48,4 @@
+     GreetingCardTheme {
+         Greeting("Android")
+     }
+-}
+\ No newline at end of file
++}
+Index: app/src/androidTest/java/com/example/greetingcard/ExampleInstrumentedTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.greetingcard\n\nimport androidx.test.platform.app.InstrumentationRegistry\nimport androidx.test.ext.junit.runners.AndroidJUnit4\n\nimport org.junit.Test\nimport org.junit.runner.RunWith\n\nimport org.junit.Assert.*\n\n/**\n * Instrumented test, which will execute on an Android device.\n *\n * See [testing documentation](http://d.android.com/tools/testing).\n */\n@RunWith(AndroidJUnit4::class)\nclass ExampleInstrumentedTest {\n    @Test\n    fun useAppContext() {\n        // Context of the app under test.\n        val appContext = InstrumentationRegistry.getInstrumentation().targetContext\n        assertEquals(\"com.example.greetingcard\", appContext.packageName)\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/androidTest/java/com/example/greetingcard/ExampleInstrumentedTest.kt b/app/src/androidTest/java/com/example/greetingcard/ExampleInstrumentedTest.kt
+--- a/app/src/androidTest/java/com/example/greetingcard/ExampleInstrumentedTest.kt	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/app/src/androidTest/java/com/example/greetingcard/ExampleInstrumentedTest.kt	(date 1729759916905)
+@@ -1,13 +1,11 @@
+ package com.example.greetingcard
+ 
+-import androidx.test.platform.app.InstrumentationRegistry
+ import androidx.test.ext.junit.runners.AndroidJUnit4
+-
++import androidx.test.platform.app.InstrumentationRegistry
++import org.junit.Assert.*
+ import org.junit.Test
+ import org.junit.runner.RunWith
+ 
+-import org.junit.Assert.*
+-
+ /**
+  * Instrumented test, which will execute on an Android device.
+  *
+@@ -21,4 +19,4 @@
+         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+         assertEquals("com.example.greetingcard", appContext.packageName)
+     }
+-}
+\ No newline at end of file
++}
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    alias(libs.plugins.android.application)\n    alias(libs.plugins.kotlin.android)\n    alias(libs.plugins.kotlin.compose)\n}\n\nandroid {\n    namespace = \"com.example.greetingcard\"\n    compileSdk = 34\n\n    defaultConfig {\n        applicationId = \"com.example.greetingcard\"\n        minSdk = 24\n        targetSdk = 34\n        versionCode = 1\n        versionName = \"1.0\"\n\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\n    }\n\n    buildTypes {\n        release {\n            isMinifyEnabled = false\n            proguardFiles(\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\n                \"proguard-rules.pro\"\n            )\n        }\n    }\n    compileOptions {\n        sourceCompatibility = JavaVersion.VERSION_11\n        targetCompatibility = JavaVersion.VERSION_11\n    }\n    kotlinOptions {\n        jvmTarget = \"11\"\n    }\n    buildFeatures {\n        compose = true\n    }\n}\n\ndependencies {\n\n    implementation(libs.androidx.core.ktx)\n    implementation(libs.androidx.lifecycle.runtime.ktx)\n    implementation(libs.androidx.activity.compose)\n    implementation(platform(libs.androidx.compose.bom))\n    implementation(libs.androidx.ui)\n    implementation(libs.androidx.ui.graphics)\n    implementation(libs.androidx.ui.tooling.preview)\n    implementation(libs.androidx.material3)\n    testImplementation(libs.junit)\n    androidTestImplementation(libs.androidx.junit)\n    androidTestImplementation(libs.androidx.espresso.core)\n    androidTestImplementation(platform(libs.androidx.compose.bom))\n    androidTestImplementation(libs.androidx.ui.test.junit4)\n    debugImplementation(libs.androidx.ui.tooling)\n    debugImplementation(libs.androidx.ui.test.manifest)\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/app/build.gradle.kts	(date 1729759916779)
+@@ -1,10 +1,16 @@
++import com.android.build.gradle.internal.tasks.factory.dependsOn
+ plugins {
+     alias(libs.plugins.android.application)
+     alias(libs.plugins.kotlin.android)
+     alias(libs.plugins.kotlin.compose)
++    alias(libs.plugins.gradle.ktlint)
+ }
+ 
+ android {
++    project.tasks.preBuild.dependsOn("ktlintFormat")
++    ktlint {
++        android.set(true)
++    }
+     namespace = "com.example.greetingcard"
+     compileSdk = 34
+ 
+@@ -23,7 +29,7 @@
+             isMinifyEnabled = false
+             proguardFiles(
+                 getDefaultProguardFile("proguard-android-optimize.txt"),
+-                "proguard-rules.pro"
++                "proguard-rules.pro",
+             )
+         }
+     }
+@@ -56,4 +62,4 @@
+     androidTestImplementation(libs.androidx.ui.test.junit4)
+     debugImplementation(libs.androidx.ui.tooling)
+     debugImplementation(libs.androidx.ui.test.manifest)
+-}
+\ No newline at end of file
++}
+Index: app/src/main/java/com/example/greetingcard/ui/theme/Theme.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.greetingcard.ui.theme\n\nimport android.app.Activity\nimport android.os.Build\nimport androidx.compose.foundation.isSystemInDarkTheme\nimport androidx.compose.material3.MaterialTheme\nimport androidx.compose.material3.darkColorScheme\nimport androidx.compose.material3.dynamicDarkColorScheme\nimport androidx.compose.material3.dynamicLightColorScheme\nimport androidx.compose.material3.lightColorScheme\nimport androidx.compose.runtime.Composable\nimport androidx.compose.ui.platform.LocalContext\n\nprivate val DarkColorScheme = darkColorScheme(\n    primary = Purple80,\n    secondary = PurpleGrey80,\n    tertiary = Pink80\n)\n\nprivate val LightColorScheme = lightColorScheme(\n    primary = Purple40,\n    secondary = PurpleGrey40,\n    tertiary = Pink40\n\n    /* Other default colors to override\n    background = Color(0xFFFFFBFE),\n    surface = Color(0xFFFFFBFE),\n    onPrimary = Color.White,\n    onSecondary = Color.White,\n    onTertiary = Color.White,\n    onBackground = Color(0xFF1C1B1F),\n    onSurface = Color(0xFF1C1B1F),\n    */\n)\n\n@Composable\nfun GreetingCardTheme(\n    darkTheme: Boolean = isSystemInDarkTheme(),\n    // Dynamic color is available on Android 12+\n    dynamicColor: Boolean = true,\n    content: @Composable () -> Unit\n) {\n    val colorScheme = when {\n        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {\n            val context = LocalContext.current\n            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)\n        }\n\n        darkTheme -> DarkColorScheme\n        else -> LightColorScheme\n    }\n\n    MaterialTheme(\n        colorScheme = colorScheme,\n        typography = Typography,\n        content = content\n    )\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/greetingcard/ui/theme/Theme.kt b/app/src/main/java/com/example/greetingcard/ui/theme/Theme.kt
+--- a/app/src/main/java/com/example/greetingcard/ui/theme/Theme.kt	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/app/src/main/java/com/example/greetingcard/ui/theme/Theme.kt	(date 1729759918047)
+@@ -1,6 +1,5 @@
+ package com.example.greetingcard.ui.theme
+ 
+-import android.app.Activity
+ import android.os.Build
+ import androidx.compose.foundation.isSystemInDarkTheme
+ import androidx.compose.material3.MaterialTheme
+@@ -11,17 +10,18 @@
+ import androidx.compose.runtime.Composable
+ import androidx.compose.ui.platform.LocalContext
+ 
+-private val DarkColorScheme = darkColorScheme(
+-    primary = Purple80,
+-    secondary = PurpleGrey80,
+-    tertiary = Pink80
+-)
++private val DarkColorScheme =
++    darkColorScheme(
++        primary = Purple80,
++        secondary = PurpleGrey80,
++        tertiary = Pink80,
++    )
+ 
+-private val LightColorScheme = lightColorScheme(
+-    primary = Purple40,
+-    secondary = PurpleGrey40,
+-    tertiary = Pink40
+-
++private val LightColorScheme =
++    lightColorScheme(
++        primary = Purple40,
++        secondary = PurpleGrey40,
++        tertiary = Pink40,
+     /* Other default colors to override
+     background = Color(0xFFFFFBFE),
+     surface = Color(0xFFFFFBFE),
+@@ -30,29 +30,30 @@
+     onTertiary = Color.White,
+     onBackground = Color(0xFF1C1B1F),
+     onSurface = Color(0xFF1C1B1F),
+-    */
+-)
++     */
++    )
+ 
+ @Composable
+ fun GreetingCardTheme(
+     darkTheme: Boolean = isSystemInDarkTheme(),
+     // Dynamic color is available on Android 12+
+     dynamicColor: Boolean = true,
+-    content: @Composable () -> Unit
++    content: @Composable () -> Unit,
+ ) {
+-    val colorScheme = when {
+-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+-            val context = LocalContext.current
+-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+-        }
++    val colorScheme =
++        when {
++            dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
++                val context = LocalContext.current
++                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
++            }
+ 
+-        darkTheme -> DarkColorScheme
+-        else -> LightColorScheme
+-    }
++            darkTheme -> DarkColorScheme
++            else -> LightColorScheme
++        }
+ 
+     MaterialTheme(
+         colorScheme = colorScheme,
+         typography = Typography,
+-        content = content
++        content = content,
+     )
+-}
+\ No newline at end of file
++}
+Index: app/src/main/java/com/example/greetingcard/ui/theme/Type.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.greetingcard.ui.theme\n\nimport androidx.compose.material3.Typography\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontFamily\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\n\n// Set of Material typography styles to start with\nval Typography = Typography(\n    bodyLarge = TextStyle(\n        fontFamily = FontFamily.Default,\n        fontWeight = FontWeight.Normal,\n        fontSize = 16.sp,\n        lineHeight = 24.sp,\n        letterSpacing = 0.5.sp\n    )\n    /* Other default text styles to override\n    titleLarge = TextStyle(\n        fontFamily = FontFamily.Default,\n        fontWeight = FontWeight.Normal,\n        fontSize = 22.sp,\n        lineHeight = 28.sp,\n        letterSpacing = 0.sp\n    ),\n    labelSmall = TextStyle(\n        fontFamily = FontFamily.Default,\n        fontWeight = FontWeight.Medium,\n        fontSize = 11.sp,\n        lineHeight = 16.sp,\n        letterSpacing = 0.5.sp\n    )\n    */\n)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/greetingcard/ui/theme/Type.kt b/app/src/main/java/com/example/greetingcard/ui/theme/Type.kt
+--- a/app/src/main/java/com/example/greetingcard/ui/theme/Type.kt	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/app/src/main/java/com/example/greetingcard/ui/theme/Type.kt	(date 1729759918069)
+@@ -7,14 +7,16 @@
+ import androidx.compose.ui.unit.sp
+ 
+ // Set of Material typography styles to start with
+-val Typography = Typography(
+-    bodyLarge = TextStyle(
+-        fontFamily = FontFamily.Default,
+-        fontWeight = FontWeight.Normal,
+-        fontSize = 16.sp,
+-        lineHeight = 24.sp,
+-        letterSpacing = 0.5.sp
+-    )
++val Typography =
++    Typography(
++        bodyLarge =
++            TextStyle(
++                fontFamily = FontFamily.Default,
++                fontWeight = FontWeight.Normal,
++                fontSize = 16.sp,
++                lineHeight = 24.sp,
++                letterSpacing = 0.5.sp,
++            ),
+     /* Other default text styles to override
+     titleLarge = TextStyle(
+         fontFamily = FontFamily.Default,
+@@ -30,5 +32,5 @@
+         lineHeight = 16.sp,
+         letterSpacing = 0.5.sp
+     )
+-    */
+-)
+\ No newline at end of file
++     */
++    )
+Index: app/src/main/java/com/example/greetingcard/ui/theme/Color.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.greetingcard.ui.theme\n\nimport androidx.compose.ui.graphics.Color\n\nval Purple80 = Color(0xFFD0BCFF)\nval PurpleGrey80 = Color(0xFFCCC2DC)\nval Pink80 = Color(0xFFEFB8C8)\n\nval Purple40 = Color(0xFF6650a4)\nval PurpleGrey40 = Color(0xFF625b71)\nval Pink40 = Color(0xFF7D5260)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/greetingcard/ui/theme/Color.kt b/app/src/main/java/com/example/greetingcard/ui/theme/Color.kt
+--- a/app/src/main/java/com/example/greetingcard/ui/theme/Color.kt	(revision d2fb418e2736cb31250babcc3ac00a9eb72121ff)
++++ b/app/src/main/java/com/example/greetingcard/ui/theme/Color.kt	(date 1729759917991)
+@@ -8,4 +8,4 @@
+ 
+ val Purple40 = Color(0xFF6650a4)
+ val PurpleGrey40 = Color(0xFF625b71)
+-val Pink40 = Color(0xFF7D5260)
+\ No newline at end of file
++val Pink40 = Color(0xFF7D5260)

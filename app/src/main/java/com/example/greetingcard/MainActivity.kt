@@ -21,8 +21,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             GreetingCardTheme {
                 // カリキュラムのコードではMaterialTheme.colors.backgroundだったが、Unresolved reference: colorsというエラーのため変更 //
-                Surface(modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background,
+                ) {
                     Greeting("Android")
                 }
             }
@@ -34,11 +36,10 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String) {
     Surface(color = Color.Magenta) {
         Text(
-            text = "Hi, my name is $name!", modifier = Modifier.padding(24.dp)
+            text = "Hi, my name is $name!",
+            modifier = Modifier.padding(24.dp),
         )
-
     }
-
 }
 
 @Preview(showBackground = true)

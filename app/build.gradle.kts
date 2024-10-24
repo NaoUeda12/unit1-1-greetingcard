@@ -1,10 +1,16 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.gradle.ktlint)
 }
 
 android {
+    project.tasks.preBuild.dependsOn("ktlintFormat")
+    ktlint {
+        android.set(true)
+    }
     namespace = "com.example.greetingcard"
     compileSdk = 34
 
@@ -23,7 +29,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
